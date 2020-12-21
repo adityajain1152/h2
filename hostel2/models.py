@@ -30,6 +30,8 @@ class Council(models.Model):
     conatctno = models.CharField(max_length=150)
     email = models.CharField(max_length=150)
     picture = models.ImageField(upload_to='images/')
+    councillor = models.BooleanField(default=False)
+
 
 
     def __str__(self):

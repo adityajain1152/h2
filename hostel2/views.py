@@ -29,4 +29,7 @@ def legend(request):
     return render(request, 'hostel2/legend.html', context)
 
 def contactus(request):
-    return render(request, 'hostel2/gallery.html')
+    all_council_categorys = Council_Category.objects.all()
+    all_council = Council.objects.all()
+    context = { 'all_council_categorys' : all_council_categorys, 'all_council' : all_council}
+    return render(request, 'hostel2/contactus.html', context)

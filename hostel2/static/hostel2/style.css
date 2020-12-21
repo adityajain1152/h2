@@ -1,7 +1,7 @@
 
 body
 {
-  background-image: url(Pictures/Among_trees_8.jpg);
+  background-image: url(Images/Among_trees_8.jpg);
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -496,7 +496,7 @@ footer a:hover {
     border-top: 2px solid lightcyan;
     border-bottom: 2px solid lightcyan;
     border-radius: 4px;
-    background-image: url(Pictures/icon2.png);
+    background-image: url(Images/icon2.png);
     background-position: 1vw -2vh;
     background-repeat: no-repeat;
     background-size: 8em;

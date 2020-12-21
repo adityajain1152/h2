@@ -54,19 +54,17 @@
               <th>Name</th>
               <th>Year</th>
             </tr>
-               {% for legend in all_legends %}
-
+           {% for legend in all_legends %}
            {% if legend.type == category %}
-
             <tr>
               <td>{{ legend.name }}</td>
               <td>{{ legend.type }}</td>
             </tr>
 
-{% endif %}
-              {% endfor %}
+           {% endif %}
+           {% endfor %}
           </table>
-        </div>
+            </div>
       </div>
 
 
