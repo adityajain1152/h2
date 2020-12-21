@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from .models import *
 
 
 def base(request):
@@ -20,7 +21,12 @@ def home(request):
 
 def gallery(request):
     return render(request, 'hostel2/gallery.html')
+
 def legend(request):
-    return render(request, 'hostel2/gallery.html')
+    all_categorys = Legend_Category.objects.all()
+    all_legends = Legends.objects.all()
+    context = { 'all_categorys' : all_categorys, 'all_legends' : all_legends}
+    return render(request, 'hostel2/legend.html', context)
+
 def contactus(request):
     return render(request, 'hostel2/gallery.html')
