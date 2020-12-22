@@ -1,6 +1,6 @@
 {% extends "hostel2/base.html" %}
 {% load crispy_forms_tags %}
-  {% block content %}
+  {% block body %}
   <div class="container">
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
@@ -14,4 +14,4 @@
         </div>
     </form>
   </div>
-  {% endblock content %}
+  {% endblock body %}
