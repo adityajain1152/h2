@@ -134,12 +134,15 @@
   <h2 style="text-align:center; margin:2vw; color:magenta; background-color:black; border: 2px solid magenta;">{{council_category.name}}</h2>
                {% for council in all_council %}
            {% if council.category == council_category %}
+
+
+    <div class="row">
     {% if council.councillor == true %}
-<div class="row">
+        <p> rhiurhfhnhkjjkkkkkkkkkkkkkkkkkkkkkkkkk</p >
   <div class="columnX">
 
 {% else %}
-<div class="row">
+
   <div class="column">
 {% endif %}
     <div class={{council_category.id}}>
@@ -154,7 +157,7 @@
     </div>
   </div>
 </div>
-</div>
+
     {% endif %}
     {% endfor %}
 {% endfor %}
