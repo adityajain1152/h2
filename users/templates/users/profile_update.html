@@ -1,6 +1,10 @@
 {% extends "hostel2/base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
   {% block body %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'users/profile.css' %}">
+<div style="background-color: white; margin-left: 15%; margin-right: 15%; padding: 2%;">
   <div class="container">
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
@@ -11,7 +15,9 @@
         </fieldset>
         <div class="form-group">
             <button class="btn btn-outline-info" type="submit">Update</button>
+            <a class="btn btn-outline-info" type="submit" href="{% url 'profile' %}">Back</a> 
         </div>
     </form>
   </div>
+</div>
   {% endblock body %}

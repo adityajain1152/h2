@@ -1,12 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 body,
 		html {
 			margin: 0;
 			padding: 0;
 			height: 100%;
     font-family: cursive;
-    background-image: url("hostel2\static\hostel2\Images\bg.jpg");
+  background: url("Images/Among_trees_5.jpg") ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
     color: aquamarine;
 		}
+
+
 		.user_card {
 			width: 350px;
 			margin-top: auto;
@@ -29,12 +35,13 @@ body,
 		}
 
 		#form-title{
-			color: #fff;
+			color: black !important;
+			font-family: 'Luckiest Guy', cursive;
 		}
 		.login_btn {
 			width: 100%;
 			background: #33ccff !important;
-			color: white !important;
+			color: black !important;
 		}
 		.login_btn:focus {
 			box-shadow: none !important;
@@ -54,3 +61,15 @@ body,
 			box-shadow: none !important;
 			outline: 0px !important;
 		}
+
+
+
+.text{
+	color: black !important;
+
+}
+
+.text2
+{
+	font-family: 'Luckiest Guy', cursive;
+}

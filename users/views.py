@@ -6,7 +6,6 @@ from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 
 
-
 def registerPage(request):
     if request.user.is_authenticated:
         return redirect('home_page')
@@ -25,23 +24,27 @@ def registerPage(request):
         return render(request, 'users/register.html', context)
 
 def loginPage(request):
-	if request.user.is_authenticated:
-		return redirect('home_page')
-	else:
-		if request.method == 'POST':
-			username = request.POST.get('username')
-			password =request.POST.get('password')
+    if request.user.is_authenticated:
+        return redirect('home_page')
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password =request.POST.get('password')
 
-			user = authenticate(request, username=username, password=password)
+            user = authenticate(request, username=username, password=password)
 
-			if user is not None:
-				login(request, user)
-				return redirect('home_page')
-			else:
-				messages.info(request, 'Username/Password is incorrect')
+            if user is not None:
+                login(request, user)
+                return redirect('home_page')
+            else:
+                messages.info(request, 'Username/Password is incorrect')
 
-		context = {}
-		return render(request, 'users/login.html', context)
+        context = {}
+        return render(request, 'users/login.html', context)
+
+def logoutPage(request):
+	logout(request)
+	return redirect('home_page')
 
 @login_required
 def profile(request):
@@ -66,3 +69,4 @@ def profile_update(request):
     }
 
     return render(request, 'users/profile_update.html', context)
+

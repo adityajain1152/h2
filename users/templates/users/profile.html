@@ -1,91 +1,41 @@
+  
 {% extends "hostel2/base.html" %}
 {% load crispy_forms_tags %}
-  {% block body %}
-  
-<div class="container">
-<div class="center">
-  <div style="background-repeat: no-repeat;
-  background-position: -400px 0, 0 0;
+{% load static %}
+{% block body %}
 
-  background-image: -webkit-linear-gradient(
-    top left,
-    rgba(100, 100, 100, 0.2) 0%,
-    rgba(100, 100, 100, 0.2) 37%,
-    rgba(100, 100, 100, 0.8) 45%,
-    rgba(100, 100, 100, 0.0) 50%
-  );
-  background-image: -moz-linear-gradient(
-    0 0,
-    rgba(255, 255, 255, 0.2) 0%,
-    rgba(255, 255, 255, 0.2) 37%,
-    rgba(255, 255, 255, 0.8) 45%,
-    rgba(255, 255, 255, 0.0) 50%
-  );
-  background-image: -o-linear-gradient(
-    0 0,
-    rgba(255, 255, 255, 0.2) 0%,
-    rgba(255, 255, 255, 0.2) 37%,
-    rgba(255, 255, 255, 0.8) 45%,
-    rgba(255, 255, 255, 0.0) 50%
-  );
-  background-image: linear-gradient(
-    0 0,
-    rgba(255, 255, 255, 0.2) 0%,
-    rgba(255, 255, 255, 0.2) 37%,
-    rgba(255, 255, 255, 0.8) 45%,
-    rgba(255, 255, 255, 0.0) 50%
-  );
+  <link rel="stylesheet" type="text/css" href="{% static 'users/profile.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
 
-  -moz-background-size: 250% 250%, 100% 100%;
-       background-size: 250% 250%, 100% 100%;
-
-  -webkit-transition: background-position 0s ease;
-     -moz-transition: background-position 0s ease;
-       -o-transition: background-position 0s ease;
-          transition: background-position 0s ease;
-          
-
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        border-radius: 5px;
-        border: 3px solid darkorchid;
-        padding: 10px;
-        background-image: linear-gradient(to left,indigo,mediumorchid,indigo);
-        color: pink;
-        
-        :hover {
-            background-position: 0 0, 0 0;
-            -webkit-transition-duration : 0.5s;
-            -moz-transition-duration: 0.5s;
-            transition-duration: 0.5s;
-            border: 3px solid moccasin;
-            box-shadow: 20px 20px 12px 0 rgba(0, 0, 0, 0.5);
-        }">
-    <img style="height: 200px;
-                width: 200px;
-                float: left;
-                border-radius: 500px;
-                border: 3px solid pink;
-                margin: 20px;
-                
-                :hover {
-                  border: 3px solid moccasin;
-                }" 
-        src="{{ user.profile.image.url }}">
-    <div class="container">
-      <h2 style="font-weight: bolder; font-family: Lucida Calligraphy; font-size: 40px;">{{ user.username }}</h2>
-      <p style="font-size:20px; margin-bottom:5px;"><b>Email: &nbsp; </b>{{ user.email }}</p>
-      <p style="font-size:20px; margin-bottom:5px;"><b>Roll No: &nbsp; </b>{{ user.profile.roll_no }}</p>
-      <p style="font-size:20px; margin-bottom:5px;"><b>Room No: &nbsp; </b>{{ user.profile.room_no }}</p>
-      <p style="font-size:20px; margin-bottom:5px;"><b>Interests: &nbsp; </b>{{ user.profile.interests }}</p>
-      <p style="font-size:20px; margin-bottom:5px;"><b>GC Participation: &nbsp; </b>{{ user.profile.gc_participation }}</p>
-    </div>
+<div class="container"> <section class="profile_container">
+  <div class="profile_img_section">
+    <img class="profile_img-LG" src="{{ user.profile.image.url }}" />
   </div>
-</div>
-</div>
-</div>
-<br>
 
-<div class="container">
-  <a class="btn btn-outline-success" href="{% url 'profile_update' %}">Edit Profile</a>
-</div>
-  {% endblock body %}
+  <div class="profile_desc_section">
+    <h2 style="font-weight: bolder; font-family: 'Acme', sans-serif; font-size: 50px; color: white; text-shadow: 3px 3px 3px rgb(9, 240, 240);">Hi, {{ user.username }}</h2>
+    <h3 style="font-weight: bolder; color: white;"><b>Email: &nbsp; </b>{{ user.email }}</h3>
+    <h3 style="font-weight: bolder; color: white;"><b>Roll No: &nbsp; </b>{{ user.profile.roll_no }}</h3>
+    <h3 style="font-weight: bolder; color: white;"><b>Room No: &nbsp; </b>{{ user.profile.room_no }}</h3>
+    <h3 style="font-weight: bolder; color: white;"><b>GC Participation: &nbsp; </b>{{ user.profile.gc_participation }}</h3>
+    <h3 style="font-weight: bolder; color: white;"><b>Interests: &nbsp; </b></h3>
+    <h3 style="font-weight: bolder; color: white;">&nbsp;
+      {% for i in user.profile.interests %}
+       <div style="padding: 8px; background-color: aqua; display: inline; color: rgb(0, 32, 32); border-radius: 6px; font-size: 24px;">
+        {{ i }}
+       </div>  &nbsp;
+      {% endfor %}
+    </h3>
+    <h3 style="font-weight: bolder; color: white;"><b>Awards: &nbsp; </b>{{ user.profile.awards }}</h3>
+    <h3 style="font-weight: bolder; color: white;"><b>E-certificates: &nbsp; </b>
+      <a href="{{ user.profile.e_certificates.url }}" target="_blank" style="padding: 0%;">
+        <img style="width: 50px; height: 50px;" src="/media/awards_1.jpg" />
+      </a>
+    </h3>
+    <hr>
+    <a class="btn btn-outline-danger" style="background-color: red; color: white; margin-left: 6rem; margin-right: 6rem;" href="{% url 'profile_update' %}">Edit Profile</a>
+  </div>
+  </div>
+ 
+
+ {% endblock body %}
